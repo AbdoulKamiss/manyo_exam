@@ -1,0 +1,32 @@
+fr:
+  activerecord:
+    models:
+      task: tâche
+    attributes:
+      task:
+        title: titre
+        content: contenu
+  global:
+    tasks_index: liste des tâches
+    new_task: enregistrer une tâche
+  validation:
+    title: veuillez entrer un titre
+    content: veuillez saisir le contenu   
+  common:
+    title: titre
+    content: contenu
+    created_at: date et heure de création
+    tasks_index: page de la liste des tâches
+    show: détail
+    edit: éditer
+    destroy: supprimer
+    new_task: page d'enregistrement des tâches
+    create_task: enregistrer
+    back: retourner
+    show_task: page de détail de la tâche  
+    edit_task: page d'édition des tâches
+    update_task: mise à jour
+    confirm: vous êtes sûr de vouloir le supprimer ?
+    created: tâche enregistrée
+    updated: tâche mise à jour
+    destroyed: tâche supprimée 
