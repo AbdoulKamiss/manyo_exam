@@ -6,6 +6,14 @@ ja:
       task:
         title: "タイトル"
         content: "内容"
+    errors:
+      models:
+        task:
+          attributes:
+            title:
+              blank: "タイトルは空白にできません"
+            content: 
+              blank: "内容が空白であることはありえない"
   global:
     tasks_index: タスク一覧ページ"
     new_task: "タスク登録ページ"

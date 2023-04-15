@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         if @task.save
-          flash[:notice] = t('.created')
+          flash[:notice] = t('common.created')
           redirect_to tasks_url
         else
           render :new
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
     def update
         if @task.update(task_params)
-          flash[:notice] = t('.updated')
+          flash[:notice] = t('common.updated')
           redirect_to @task
         else
           render :edit
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     
     def destroy
         @task.destroy
-        flash[:notice] = t('destroyed')
+        flash[:notice] = t('common.destroyed')
         redirect_to tasks_url
     end
 
