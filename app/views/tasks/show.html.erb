@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1><%= t("common.show_task") %></h1>
 
 <h1><%= @task.title %></h1>
