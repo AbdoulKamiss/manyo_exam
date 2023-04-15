@@ -5,9 +5,9 @@ RSpec.describe 'Task management function', type: :system do
     context 'When you register a task' do
       before do
         visit new_task_path
-        fill_in 'Title', with: 'first_task'
-        fill_in 'Content', with: 'Prepare a proposal.'
-        click_button 'Enregistrer'
+        fill_in 'タイトル', with: 'first_task'
+        fill_in '内容', with: 'Prepare a proposal.'
+        click_button '登録する'
       end
 
       it 'Registered tasks are displayed' do
@@ -36,14 +36,13 @@ RSpec.describe 'Task management function', type: :system do
     end
 
     context 'When a new task is created' do
-      let!(:new_task) { FactoryBot.create(:task, title: 'new_task_title') }
+      let!(:new_task) { FactoryBot.create(:task, title: 'new_task_title', created_at: '2025-02-15') }
 
       before do
         visit tasks_path
       end
 
       it 'New tasks appear at the top of the list' do
-        travel_to Date.new(2025, 02, 20)
         expect(page).to have_content('new_task_title')
         expect(page).to have_content(new_task.created_at.strftime('%Y/%m/%d'))
       end
@@ -53,9 +52,9 @@ RSpec.describe 'Task management function', type: :system do
   describe 'Detail display function' do
     context 'When transitioning to any task detail screen' do
       before do
-        FactoryBot.create(:task)
+        FactoryBot.create(:task, content: 'first_task')
         visit tasks_path
-        click_on 'Détail'
+        click_on '詳細'
       end
 
       it 'The contents of that task are displayed' do
