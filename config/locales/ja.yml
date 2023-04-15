@@ -15,8 +15,8 @@ ja:
             content: 
               blank: "内容が空白であることはありえない"
   global:
-    tasks_index: "タスク一覧ページ"
-    new_task: "タスク登録ページ" 
+    tasks_index: "タスク一覧"
+    new_task: "タスクを登録する"
   common:
     title: "タイトル"
     content: "内容"
