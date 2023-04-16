@@ -2,7 +2,7 @@ class TasksController < ApplicationController
     before_action :set_task, only: %i[ show edit update destroy ]
 
     def index
-        @tasks = Task.all 
+        @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(10)
     end
 
     def new
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         if @task.save
-          flash[:notice] = 'Task was successfully created.'
+          flash[:notice] = t('common.created')
           redirect_to tasks_url
         else
           render :new
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
     def update
         if @task.update(task_params)
-          flash[:notice] = 'Task was successfully updated.'
+          flash[:notice] = t('common.updated')
           redirect_to @task
         else
           render :edit
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     
     def destroy
         @task.destroy
-        flash[:notice] = 'Task was successfully destroyed.'
+        flash[:notice] = t('common.destroyed')
         redirect_to tasks_url
     end
 
