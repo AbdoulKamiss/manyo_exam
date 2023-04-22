@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Task management function', type: :system do
+
+    let!(:first_task) { FactoryBot.create(:task, title: 'first_task', deadline_on: '2025-02-18', priority: 'medium', status: 'todo')  }
+    let!(:second_task) { FactoryBot.create(:task, title: 'second_task', deadline_on: '2025-02-17', priority: 'high', status: 'doing') }
+    let!(:third_task) { FactoryBot.create(:task, title: 'third_task', deadline_on: '2025-02-16', priority: 'low', status: 'done') }
+
   describe 'Registration function' do
     context 'When registering a task' do
       it 'The registered task is displayed' do
@@ -12,9 +17,6 @@ RSpec.describe 'Task management function', type: :system do
   end
 
   describe 'List display function' do
-    let!(:first_task) { FactoryBot.create(:task, created_at: '2025-02-18') }
-    let!(:second_task) { FactoryBot.create(:task, created_at: '2025-02-17') }
-    let!(:third_task) { FactoryBot.create(:task, created_at: '2025-02-16') }
 
     before do
       visit tasks_path
@@ -26,7 +28,7 @@ RSpec.describe 'Task management function', type: :system do
       end
     end
     context 'When creating a new task' do
-      let!(:new_task) { FactoryBot.create(:task, title: 'new_task_title', created_at: '2025-02-19') }
+      let!(:new_task) { FactoryBot.create(:task, title: 'new_task_title', created_at: '2025-02-19', deadline_on: '2025-02-20', priority: :medium, status: :todo) }
 
       before do
         visit tasks_path
@@ -47,4 +49,33 @@ RSpec.describe 'Task management function', type: :system do
        end
      end
   end
+  describe 'Sorting function' do
+     context 'If you click on the link of deadline' do
+       it 'A list of tasks sorted in ascending order of due date is displayed' do
+         # Utilisez la méthode all pour vérifier l'ordre de plusieurs données de test.
+       end
+     end
+     context 'If you click on the link of priority' do
+       it 'A list of tasks sorted by priority is displayed' do
+         # Utilisez la méthode all pour vérifier l'ordre de plusieurs données de test.
+       end
+     end
+   end
+   describe 'Search function' do
+     context 'If you perform a fuzzy search by Title' do
+       it 'Only tasks that contain search terms are displayed.' do
+         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+       end
+     end
+     context 'Search by status' do
+       it 'Status matches' do
+         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+       end
+     end
+     context 'Title and search by status' do
+       it 'Only tasks that contain the search word Title and match the status will be displayed' do
+         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+       end
+     end
+   end
 end
