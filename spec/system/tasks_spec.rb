@@ -50,31 +50,58 @@ RSpec.describe 'Task management function', type: :system do
      end
   end
   describe 'Sorting function' do
+      before do
+        visit tasks_path
+      end
      context 'If you click on the link of deadline' do
        it 'A list of tasks sorted in ascending order of due date is displayed' do
-         # Utilisez la méthode all pour vérifier l'ordre de plusieurs données de test.
+        click_on '終了期限'
+        task_list = all('tbody tr')
+        expect(task_list[0]).to have_content third_task.title
+        expect(task_list[1]).to have_content second_task.title
+        expect(task_list[2]).to have_content first_task.title
        end
      end
      context 'If you click on the link of priority' do
        it 'A list of tasks sorted by priority is displayed' do
-         # Utilisez la méthode all pour vérifier l'ordre de plusieurs données de test.
+        click_on '優先度'
+        task_list = all('tbody tr')
+        expect(task_list[0]).to have_content second_task.title
+        expect(task_list[1]).to have_content first_task.title
+        expect(task_list[2]).to have_content third_task.title
        end
      end
    end
    describe 'Search function' do
+    before do
+      visit tasks_path
+    end
      context 'If you perform a fuzzy search by Title' do
        it 'Only tasks that contain search terms are displayed.' do
-         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+        fill_in 'search_title', with: 'd_task'
+        click_button('search_task')
+        expect(page).to have_content(second_task.title)
+        expect(page).to have_content(third_task.title)
+        expect(page).not_to have_content(first_task.title)
        end
      end
      context 'Search by status' do
        it 'Status matches' do
-         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+        select('完了', from: 'task_status')
+        click_button('search_task')
+        expect(page).to have_content(third_task.title)
+        expect(page).not_to have_content(first_task.title)
+        expect(page).not_to have_content(second_task.title)
        end
      end
      context 'Title and search by status' do
        it 'Only tasks that contain the search word Title and match the status will be displayed' do
-         # Utilisez les matrices to et not_to pour vérifier à la fois ce qui est affiché et ce qui ne l'est pas.
+        fill_in 'search_title', with: 'd_task'
+        select('完了', from: 'task_status')
+        click_button('search_task')
+        expect(page).to have_content(third_task.title)
+        expect(page).not_to have_content(first_task.title)
+        expect(page).not_to have_content(second_task.title)
        end
      end
    end
