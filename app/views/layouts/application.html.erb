@@ -19,11 +19,11 @@
         <% end %>
         <li><%= link_to t("global.tasks_index"), tasks_path, id: "tasks-index" %></li>
         <li><%= link_to t("global.new_task"), new_task_path, id: "new-task" %></li>
-        <li><%= link_to "アカウント", user_path(current_user.id), id: "my-account" %></li>
-        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, id: "sign-out" %></li>
+        <li><%= link_to t("global.my_account"), user_path(current_user.id), id: "account-setting" %></li>
+        <li><%= link_to t("global.sign_out"), session_path(current_user.id), method: :delete, id: "sign-out" %></li>
       <% else %>
-        <li><%= link_to "アカウント登録", new_user_path, id: "sign-up" %></li>
-        <li><%= link_to "ログイン", new_session_path, id: "sign-in" %></li>
+        <li><%= link_to t("global.sign_up"), new_user_path, id: "sign-up" %></li>
+        <li><%= link_to t("global.sign_in"), new_session_path, id: "sign-in" %></li>
       <% end %>
     </ul>
     <%= yield %>
