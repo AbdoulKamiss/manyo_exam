@@ -66,6 +66,8 @@ ja:
     edit_user: "アカウント編集ページ"
     show_user: "アカウント詳細ページ"
     session: "ログインページ"
-    login: "ログイン"
+    login: "ログイン" 
+    create_user: "登録する"
+    update_user: "更新する"
     
     
