@@ -69,5 +69,7 @@ ja:
     login: "ログイン" 
     create_user: "登録する"
     update_user: "更新する"
+    user_index: "ユーザ一覧"
+    add_user: "ユーザを登録する"
     
     
