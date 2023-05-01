@@ -1,4 +1,4 @@
-<h1>アカウント登録ページ</h1>
+<h1><%= t("common.new_user") %></h1>
 
 <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -28,5 +28,5 @@
   <%= f.password_field :password_confirmation %>
   <br>
   <br>
-  <%= f.submit , id: "create-user"%>
+  <%= f.submit t("common.create_user"), id: "create-user"%>
 <% end %>
