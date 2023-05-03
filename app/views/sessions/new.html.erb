@@ -1,12 +1,9 @@
-<h1><%= t("common.session") %></h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email %>
-  <br>
-  <br>
-  <%= f.label :password, "パスワード" %>
-  <%= f.password_field :password %>
-  <br>
-  <br>
-  <%= f.submit "ログイン", id: "create-session" %>
+<h1><%= t('.title') %></h1>
+<%= form_with(scope: :session, url: create_session_path, local: true) do |f| %>
+
+<%= f.label :email, t('activerecord.attributes.session.email') %><br>
+<%= f.email_field :email %><br>
+<%= f.label :password, t('activerecord.attributes.session.password') %><br>
+<%= f.password_field :password %><br>
+<%= f.submit t('enums.session.submit.login'), id: "create-session" %>
 <% end %>

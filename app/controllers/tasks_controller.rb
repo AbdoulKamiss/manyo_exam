@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   def index
     @search_params = { search_title: search_title_param, status: status_param }
-    @user = current_user # 現在のユーザーを取得するためにこの行を追加する
+    @user = current_user
     if params.dig(:search).present?
       @tasks = current_user.tasks.search_tasks(search_title_param, status_param).page(params[:page]).per(10)
     else
