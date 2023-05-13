@@ -12,26 +12,27 @@
         </ul>
       </div>
     <% end %>
-
+    <table>        
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label :name %><br>
       <%= form.text_field :name %>
     </div>
 
     <div class="field">
-      <%= form.label :email %>
+      <%= form.label :email %><br>
       <%= form.text_field :email %>
     </div>
 
     <div class="field">
-      <%= form.label :password %>
+      <%= form.label :password %><br>
       <%= form.password_field :password %>
     </div>
 
     <div class="field">
-      <%= form.label :password_confirmation %>
+      <%= form.label :password_confirmation %><br>
       <%= form.password_field :password_confirmation %>
     </div>
+    </table>
 
     <div class="actions">
       <%= form.submit t('helpers.submit.create', model: User.model_name.human), id: "create-user", class: "btn btn-primary mt-3" %>

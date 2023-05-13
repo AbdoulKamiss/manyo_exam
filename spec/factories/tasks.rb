@@ -29,5 +29,31 @@ FactoryBot.define do
     factory :general_task do
       association :user, factory: :user_with_tasks
     end
+    factory :first_task do
+      title { 'first_task' }
+      content { '企画書を作成する。' }
+      created_at {'2022-02-18'}
+      deadline_on {'2025-02-18'}
+      priority {'medium'}
+      status {'todo'}
+    end
+
+    factory :second_task do
+      title { 'second_task' }
+      content { '企画書を作成する。' }
+      created_at {'2022-02-17'}
+      deadline_on {'2025-02-17'}
+      priority {'medium'}
+      status {'doing'}
+    end
+
+    factory :third_task do
+      title { 'third_task' }
+      content { '企画書を作成する。' }
+      created_at {'2022-02-16'}
+      deadline_on {'2025-02-16'}
+      priority {'medium'}
+      status {'todo'}
+    end
   end
 end

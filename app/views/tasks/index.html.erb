@@ -1,16 +1,17 @@
+<h1 class="my-4"><%= t(".title") %></h1>
 <%= form_with model: @task, method: :get, local: true, class: "form-inline" do |f| %>
   <div class="col justify-content-start">
     <div class="row row-cols-3">
       <div class="col">
-        <%= f.label :status, t("activerecord.attributes.task.status"), class: "form-control w-100 text-left" %>
+        <%= f.label :status, t("activerecord.attributes.task.status")%>
         <%= f.select :status, options_for_select(Task.statuses_i18n, params.dig(:search, :status)), { include_blank: true }, { name: "search[status]", class: "form-control w-100", id: "task_status" } %>
       </div>
       <div class="col">
-        <%= f.label :search_title, t("activerecord.attributes.task.title"), class: "form-control w-100 text-left" %>
+        <%= f.label :search_title, t("activerecord.attributes.task.title")%>
         <%= f.text_field :search_title, name: 'search[search_title]', value: @search_params&.dig(:search_title), class: "search_input form-control w-100", id: "search_title" %>
       </div>
       <div class="col">
-        <%= label_tag :label_id, t("activerecord.attributes.task.label_id"), class: "form-control w-100 text-left" %>
+        <%= label_tag :label_id, t("activerecord.attributes.task.label_id")%>
         <%= f.select :label_ids, [["すべて", nil]] + Label.all.map { |label| [label.name, label.id] }, { selected: params.dig(:search, :label_ids), include_blank: true }, { name: "search[label_ids]", class: "form-control w-100" } %>
           <div class="row">
             <div class="col mt-3">
@@ -20,7 +21,7 @@
       </div>
     </div>
   </div>
-<% end %>
+<% end %><br>
 
 <div class="container">
   <table class="table">
@@ -46,11 +47,6 @@
           <td><%= link_to t("common.show"), task_path(task), class: "btn btn-primary show-task text-nowrap" %></td>
           <td><%= link_to t("common.edit"), edit_task_path(task), class: "btn btn-primary edit-task text-nowrap" %></td>
           <td><%= link_to t("common.destroy"), task_path(task), method: :delete, class: "btn btn-danger destroy-task text-nowrap", data: {confirm: t('common.confirm_destroy') } %></td>
-          <td>
-            <% task.labels.each do |label| %>
-              <p><%= label.name %></p>
-            <% end %>
-          </td>
         </tr>
       <% end %>
     </tbody>

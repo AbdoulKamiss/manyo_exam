@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe 'ラベルモデル機能', type: :model do
-  describe 'バリデーションのテスト' do
+RSpec.describe 'Label Model Function', type: :model do
+  describe 'Validation test' do
     let(:user) { create(:user) }
     let(:label) { build(:label, user: user) }
 
-    context 'ラベルの名前が空文字の場合' do
-      it 'バリデーションに失敗する' do
+    context 'If the label name is an empty string' do
+      it 'Validation fails' do
         label.name = ''
         expect(label).not_to be_valid
       end
     end
 
-    context 'ラベルの名前に値があった場合' do
-      it 'バリデーションに成功する' do
+    context 'If the label name has a value' do
+      it 'Validation Succeeds in' do
         expect(label).to be_valid
       end
     end
